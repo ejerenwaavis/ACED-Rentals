@@ -1,6 +1,7 @@
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 const mongoose = require('mongoose');
 const fs = require('fs');
-const path = require('path');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const DATA_FILE = path.join(DATA_DIR, 'waitlist.json');
@@ -87,7 +88,7 @@ async function migrateLocalDataIfAny() {
 
 module.exports = {
   connectDB,
-  isMongoConnected: () => isMongoConnected,
+  isMongoConnected: () => mongoose.connection.readyState === 1,
   readLocalWaitlist,
   writeLocalWaitlist,
 };

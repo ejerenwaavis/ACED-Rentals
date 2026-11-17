@@ -9,10 +9,13 @@ router.post('/waitlist', waitlistRateLimiter, waitlistController.submit);
 
 // Public health check
 router.get('/health', (req, res) => {
+  const mongoose = require('mongoose');
+  const ready = mongoose.connection.readyState;
   res.json({
     status: 'ok',
     service: 'ACED Rentals API',
-    database: isMongoConnected() ? 'mongodb' : 'local_json_fallback',
+    database: ready === 1 ? 'mongodb' : ready === 2 ? 'connecting' : 'local_json_fallback',
+    readyState: ready,
     timestamp: new Date().toISOString(),
   });
 });
