@@ -80,15 +80,25 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(staticDir, 'index.html'));
 });
 
-// Connect to Database & Start Server if executed directly
-if (require.main === module) {
-  connectDB().then(() => {
-    app.listen(PORT, () => {
-      console.log(`[ACED Rentals] Server running on port ${PORT}`);
-      console.log(`[ACED Rentals] Local Coming Soon: http://localhost:${PORT}`);
-      console.log(`[ACED Rentals] Admin Dashboard:  http://localhost:${PORT}/admin`);
-    });
-  });
-}
+// Connect to Database asynchronously in background
+connectDB().catch((err) => {
+  console.error('[DB] Background connection error:', err.message);
+});
 
+// Start listening immediately (Passenger requirement)
+const server = app.listen(PORT, () => {
+  console.log(`[ACED Rentals] Server listening on port ${PORT}`);
+  console.log(`[ACED Rentals] Coming Soon: http://localhost:${PORT}`);
+  console.log(`[ACED Rentals] Admin Panel: http://localhost:${PORT}/admin`);
+});
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use.`);
+  } else {
+    console.error('Server error:', err);
+  }
+});
+
+// Passenger export
 module.exports = app;
