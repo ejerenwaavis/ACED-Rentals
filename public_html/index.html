@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACED Rentals — Delivery Vans Made for Delivery Drivers</title>
+  <meta name="description" content="Rent spacious, reliable cargo minivans at flat rates that work. Built for Metro Atlanta route contractors, DSPs, and couriers. Early access 40% off." />
+  <meta property="og:title" content="ACED Rentals — Delivery Vans Made for Delivery Drivers" />
+  <meta property="og:description" content="Metro Atlanta cargo minivan rentals. Rent spacious, route-ready vans with no commercial traps. Join early access for 40% off." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#EA580C" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚐</text></svg>" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #F6F4F0;
+      color: #18181B;
+    }
+    .studio-canvas {
+      background:
+        radial-gradient(circle at 85% 25%, rgba(228, 228, 231, 0.45) 0%, rgba(246, 244, 240, 0) 60%),
+        linear-gradient(135deg, #FAF9F6 0%, #F4F1EC 55%, #ECE7DF 100%);
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(0.98); }
+    }
+    .badge-pulse {
+      animation: pulse-subtle 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="studio-canvas min-h-screen flex flex-col justify-between antialiased selection:bg-orange-500 selection:text-white overflow-x-hidden relative">
+
+  <!-- Top Navigation Header -->
+  <header class="w-full max-w-5xl mx-auto px-6 sm:px-10 pt-7 sm:pt-9 flex items-center justify-between relative z-10">
+    <!-- Clean Stacked ACED Rentals Wordmark Block -->
+    <a href="/" class="inline-flex flex-col items-start focus:outline-none group">
+      <span class="block text-2xl sm:text-[28px] font-black tracking-tight text-zinc-900 leading-none group-hover:text-orange-600 transition-colors">
+        ACED
+      </span>
+      <span class="block text-[9px] sm:text-[10px] font-semibold tracking-[0.34em] uppercase text-zinc-500 mt-1">
+        Rentals
+      </span>
+    </a>
+
+    <!-- Top Right Status & Tagline -->
+    <div class="flex items-center gap-4">
+      <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200/60 text-[11px] font-semibold text-orange-800">
+        <span class="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span>
+        <span>Atlanta Fleet • Coming Soon</span>
+      </div>
+      <nav aria-label="Brand Pillars" class="hidden md:flex items-center gap-3 text-[11px] font-semibold tracking-[0.2em] uppercase text-zinc-500">
+        <span>Rent</span>
+        <span class="text-orange-500">&bull;</span>
+        <span>Deliver</span>
+        <span class="text-orange-500">&bull;</span>
+        <span>Grow</span>
+      </nav>
+      <span class="sm:hidden text-[10px] font-bold tracking-[0.18em] uppercase text-zinc-500 bg-zinc-200/50 px-2.5 py-1 rounded-full">
+        Atlanta, GA
+      </span>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="w-full max-w-5xl mx-auto px-6 sm:px-10 pt-8 sm:pt-12 pb-12 relative z-10 flex-1 flex flex-col justify-center">
+
+    <!-- Hero Split Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+
+      <!-- Left Copy Column -->
+      <div class="lg:col-span-6 flex flex-col items-start">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-zinc-200 text-[11px] font-semibold tracking-[0.16em] uppercase text-zinc-600 mb-4 shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+          <span>Metro Atlanta Commercial Fleet</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-[52px] font-black tracking-[-0.03em] leading-[1.06] text-zinc-950">
+          Delivery Vans.<br />
+          Made for<br />
+          <span class="text-orange-600 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Delivery Drivers.</span>
+        </h1>
+
+        <p class="mt-4 sm:mt-5 text-sm sm:text-base text-zinc-600 leading-relaxed max-w-md">
+          Rent spacious, route-ready cargo minivans at a flat weekly price that makes sense. Tailored for Metro Atlanta route contractors, DSPs, and independent couriers.
+        </p>
+
+        <!-- Quick Spec Highlights -->
+        <div class="mt-5 flex flex-wrap items-center gap-2 text-xs text-zinc-700 font-medium">
+          <span class="inline-flex items-center gap-1.5 bg-zinc-100 border border-zinc-200/80 px-2.5 py-1 rounded-md">
+            <svg class="w-3.5 h-3.5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            140+ cu. ft. Cargo Space
+          </span>
+          <span class="inline-flex items-center gap-1.5 bg-zinc-100 border border-zinc-200/80 px-2.5 py-1 rounded-md">
+            <svg class="w-3.5 h-3.5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Fold-Flat Stowage
+          </span>
+          <span class="inline-flex items-center gap-1.5 bg-zinc-100 border border-zinc-200/80 px-2.5 py-1 rounded-md">
+            <svg class="w-3.5 h-3.5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Flexible Weekly Terms
+          </span>
+        </div>
+
+        <!-- Minimal Orange Accent Rule -->
+        <div class="w-12 h-[3px] bg-orange-500 rounded-full mt-6"></div>
+      </div>
+
+      <!-- Right Visual Column: Architectural Silver Cargo Minivan Vector Illustration -->
+      <div class="lg:col-span-6 flex justify-center lg:justify-end">
+        <div class="w-full max-w-[460px] relative">
+          
+          <!-- Subtle Floating Fleet Tag -->
+          <div class="absolute -top-3 right-4 z-20 hidden sm:flex items-center gap-2 bg-white/90 backdrop-blur-md border border-zinc-200 px-3 py-1.5 rounded-full shadow-sm text-xs font-semibold text-zinc-800">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>Commercial Spec Fleet</span>
+          </div>
+
+          <!-- Crisp Vector Illustration of Open-Hatch Silver Minivan Loaded with Cargo Boxes -->
+          <svg viewBox="0 0 520 310" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-sm select-none" role="img" aria-label="Silver cargo minivan loaded with delivery packages">
+            <defs>
+              <linearGradient id="bodySilver" x1="60" y1="80" x2="460" y2="240" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#EDEDF0" />
+                <stop offset="50%" stop-color="#D4D4D8" />
+                <stop offset="100%" stop-color="#A1A1AA" />
+              </linearGradient>
+              <linearGradient id="cabinDark" x1="250" y1="100" x2="430" y2="210" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#18181B" />
+                <stop offset="100%" stop-color="#27272A" />
+              </linearGradient>
+              <linearGradient id="boxFront" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#D6A87C" />
+                <stop offset="100%" stop-color="#B88658" />
+              </linearGradient>
+              <linearGradient id="boxSide" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#C29264" />
+                <stop offset="100%" stop-color="#9E6E43" />
+              </linearGradient>
+            </defs>
+
+            <!-- Floor Contact Shadow -->
+            <ellipse cx="265" cy="276" rx="215" ry="14" fill="#18181B" fill-opacity="0.14" />
+
+            <!-- Open Rear Liftgate Door (Raised Upward) -->
+            <path d="M242 94C275 44 345 24 426 28C436 29 442 36 439 45L422 86C365 82 295 85 242 94Z" fill="url(#bodySilver)" stroke="#71717A" stroke-width="1.5" />
+            <!-- Liftgate Glass -->
+            <path d="M266 84C294 48 352 34 416 37L406 72C356 69 306 73 266 84Z" fill="#27272A" />
+            <!-- Liftgate Struts -->
+            <line x1="264" y1="104" x2="294" y2="66" stroke="#3F3F46" stroke-width="3" stroke-linecap="round" />
+            <line x1="424" y1="102" x2="412" y2="62" stroke="#3F3F46" stroke-width="3" stroke-linecap="round" />
+
+            <!-- Main Van Side & Rear Quarter Body -->
+            <path d="M56 174C62 146 92 114 142 102L242 92L432 94C452 96 466 112 470 138L478 216C479 234 468 248 448 250H84C64 248 52 234 52 214L56 174Z" fill="url(#bodySilver)" stroke="#71717A" stroke-width="1.5" />
+
+            <!-- Side Tinted Windows -->
+            <path d="M84 156C98 134 122 118 152 113V156H84Z" fill="#27272A" />
+            <path d="M160 112L234 106V156H160V112Z" fill="#18181B" />
+            <!-- Side Mirror -->
+            <path d="M72 152C62 152 58 158 60 165H76V152H72Z" fill="#27272A" />
+
+            <!-- Open Rear Cargo Bay Interior -->
+            <rect x="256" y="104" width="184" height="106" rx="10" fill="url(#cabinDark)" stroke="#52525B" stroke-width="2" />
+
+            <!-- Stacked Cardboard Delivery Boxes Inside Cargo Bay -->
+            <!-- Bottom Row -->
+            <rect x="268" y="164" width="52" height="42" rx="2" fill="url(#boxFront)" stroke="#8C5E35" stroke-width="1" />
+            <line x1="294" y1="164" x2="294" y2="206" stroke="#F5E6D3" stroke-opacity="0.55" stroke-width="3" />
+            <rect x="322" y="160" width="56" height="46" rx="2" fill="url(#boxSide)" stroke="#8C5E35" stroke-width="1" />
+            <line x1="350" y1="160" x2="350" y2="206" stroke="#F5E6D3" stroke-opacity="0.55" stroke-width="3" />
+            <rect x="380" y="166" width="50" height="40" rx="2" fill="url(#boxFront)" stroke="#8C5E35" stroke-width="1" />
+            <line x1="405" y1="166" x2="405" y2="206" stroke="#F5E6D3" stroke-opacity="0.55" stroke-width="3" />
+            <!-- Top Row -->
+            <rect x="274" y="122" width="48" height="40" rx="2" fill="url(#boxSide)" stroke="#8C5E35" stroke-width="1" />
+            <line x1="298" y1="122" x2="298" y2="162" stroke="#F5E6D3" stroke-opacity="0.55" stroke-width="3" />
+            <rect x="326" y="116" width="52" height="42" rx="2" fill="url(#boxFront)" stroke="#8C5E35" stroke-width="1" />
+            <line x1="352" y1="116" x2="352" y2="158" stroke="#F5E6D3" stroke-opacity="0.55" stroke-width="3" />
+            <rect x="382" y="126" width="44" height="38" rx="2" fill="url(#boxSide)" stroke="#8C5E35" stroke-width="1" />
+
+            <!-- Rear Bumper & Lower Valance -->
+            <path d="M242 212H474L470 244C466 250 456 253 442 253H258C246 253 240 248 240 238L242 212Z" fill="#D4D4D8" stroke="#71717A" stroke-width="1.2" />
+            <rect x="256" y="238" width="194" height="14" rx="4" fill="#27272A" />
+
+            <!-- Taillights (Signature Red/Orange Accent) -->
+            <path d="M236 144L254 146V168L232 164L236 144Z" fill="#EA580C" />
+            <path d="M442 146L464 144L468 164L442 168V146Z" fill="#EA580C" />
+
+            <!-- Rear Reflectors -->
+            <rect x="266" y="224" width="24" height="5" rx="2" fill="#EA580C" />
+            <rect x="416" y="224" width="24" height="5" rx="2" fill="#EA580C" />
+
+            <!-- Wheels & Tires -->
+            <!-- Front Left Wheel -->
+            <circle cx="102" cy="242" r="30" fill="#18181B" />
+            <circle cx="102" cy="242" r="18" fill="#E4E4E7" stroke="#52525B" stroke-width="2" />
+            <circle cx="102" cy="242" r="6" fill="#27272A" />
+            <!-- Rear Left Wheel -->
+            <circle cx="218" cy="246" r="32" fill="#18181B" />
+            <circle cx="218" cy="246" r="19" fill="#E4E4E7" stroke="#52525B" stroke-width="2" />
+            <circle cx="218" cy="246" r="6" fill="#27272A" />
+            <!-- Rear Right Wheel -->
+            <ellipse cx="446" cy="248" rx="18" ry="30" fill="#18181B" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Three Value Pillars Strip -->
+    <section aria-label="Key Benefits" class="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-b border-zinc-200/80 py-8">
+      <!-- Pillar 1 -->
+      <div class="flex flex-col items-center md:items-start text-center md:text-left p-4 rounded-2xl bg-white/40 border border-zinc-200/50">
+        <div class="w-10 h-10 rounded-xl bg-orange-100/70 border border-orange-200 flex items-center justify-center text-orange-600 mb-3">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <h3 class="text-sm sm:text-base font-bold text-zinc-900">More Cargo Space</h3>
+        <p class="mt-1 text-xs text-zinc-600 leading-relaxed">
+          140+ cu. ft. with stow 'n go seating. Effortlessly fits 120+ standard packages per route run.
+        </p>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="flex flex-col items-center md:items-start text-center md:text-left p-4 rounded-2xl bg-white/40 border border-zinc-200/50">
+        <div class="w-10 h-10 rounded-xl bg-orange-100/70 border border-orange-200 flex items-center justify-center text-orange-600 mb-3">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <h3 class="text-sm sm:text-base font-bold text-zinc-900">Affordable Rates</h3>
+        <p class="mt-1 text-xs text-zinc-600 leading-relaxed">
+          Transparent flat weekly rates. No predatory long-term leases, hidden fees, or surprise surcharges.
+        </p>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="flex flex-col items-center md:items-start text-center md:text-left p-4 rounded-2xl bg-white/40 border border-zinc-200/50">
+        <div class="w-10 h-10 rounded-xl bg-orange-100/70 border border-orange-200 flex items-center justify-center text-orange-600 mb-3">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3 class="text-sm sm:text-base font-bold text-zinc-900">Flexible Rentals</h3>
+        <p class="mt-1 text-xs text-zinc-600 leading-relaxed">
+          Daily, weekly, or month-to-month contracts built to adapt immediately to route volume surges.
+        </p>
+      </div>
+    </section>
+
+    <!-- Early Access Offer Card (40% OFF + Waitlist Pill Form) -->
+    <section aria-label="Early Access Launch Offer" class="mt-8 sm:mt-10">
+      <div class="bg-gradient-to-br from-[#FAF8F5] to-[#F3EFEA] border border-zinc-300/80 rounded-3xl p-6 sm:p-9 shadow-[0_16px_44px_rgba(24,24,27,0.06)] relative overflow-hidden">
+        
+        <!-- Decorative subtle background badge -->
+        <div class="absolute -right-8 -bottom-8 w-48 h-48 bg-orange-500/5 rounded-full pointer-events-none blur-2xl"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center relative z-10">
+
+          <!-- Left Offer Callout -->
+          <div class="md:col-span-5 md:border-r md:border-zinc-300/80 md:pr-6 text-center md:text-left">
+            <div class="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.2em] uppercase text-orange-600 mb-1">
+              <span>★ Exclusive Launch Offer</span>
+            </div>
+            <div class="mt-1 flex items-baseline justify-center md:justify-start gap-1.5">
+              <span class="text-4xl sm:text-5xl font-black tracking-tight text-orange-600">40%</span>
+              <span class="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-900">OFF</span>
+            </div>
+            <p class="mt-1 text-base sm:text-lg font-bold text-zinc-900">
+              Your First Week Rental
+            </p>
+            <p class="mt-1 text-xs text-zinc-500">
+              Lock in early priority before public availability opens.
+            </p>
+          </div>
+
+          <!-- Right Form Column -->
+          <div class="md:col-span-7">
+            <h2 class="text-lg sm:text-xl font-bold text-zinc-950 tracking-tight">
+              Join Our Early Access Priority List
+            </h2>
+            <p class="mt-1 text-xs sm:text-sm text-zinc-600">
+              Enter your email or mobile number. We'll send your 40% voucher and van availability notice first.
+            </p>
+
+            <!-- Email / Phone Pill Input Form -->
+            <form
+              id="earlyAccessForm"
+              class="mt-4 flex items-center bg-white border border-zinc-300 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-500/20 rounded-full p-1.5 shadow-xs transition-all"
+            >
+              <label for="leadInput" id="inputIcon" class="pl-3.5 pr-2 text-zinc-400" aria-label="Email or phone icon">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3 7L12 13L21 7" />
+                </svg>
+              </label>
+              
+              <input
+                id="leadInput"
+                type="text"
+                required
+                placeholder="Enter email or 10-digit phone"
+                class="flex-1 min-w-0 bg-transparent pr-2 py-2 text-xs sm:text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none"
+              />
+              
+              <button
+                type="submit"
+                id="submitBtn"
+                class="shrink-0 inline-flex items-center gap-1.5 px-5 sm:px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold text-xs sm:text-sm shadow-xs transition-all cursor-pointer disabled:opacity-50"
+              >
+                <span id="btnText">Notify Me</span>
+                <span id="btnArrow" aria-hidden="true">&rarr;</span>
+                <svg id="btnSpinner" class="hidden animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+              </button>
+            </form>
+
+            <!-- Error Feedback Box -->
+            <div id="formError" class="hidden mt-3 text-xs text-rose-600 font-medium px-3 py-1.5 bg-rose-50 border border-rose-200 rounded-lg"></div>
+
+            <!-- Confirmation / Success State -->
+            <div
+              id="earlyAccessSuccess"
+              class="hidden mt-4 flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white border border-emerald-300 rounded-2xl sm:rounded-full px-5 py-3 text-xs sm:text-sm shadow-xs"
+            >
+              <div class="flex items-center gap-2.5">
+                <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <span class="text-zinc-800">
+                  <strong class="text-orange-600 font-bold" id="spotText">40% Launch Code Locked</strong> for <span id="submittedValue" class="font-semibold text-zinc-950"></span>
+                </span>
+              </div>
+              <a
+                id="mailtoFallback"
+                href="mailto:dispatch@acedrentals.com"
+                class="shrink-0 font-semibold text-orange-600 hover:text-orange-700 underline underline-offset-4"
+              >
+                Contact Dispatch &rarr;
+              </a>
+            </div>
+
+            <!-- Trust / Privacy micro-copy -->
+            <p class="mt-2.5 text-[11px] text-zinc-400 text-center sm:text-left">
+              🔒 Zero spam. We only contact you when the initial Atlanta fleet unlocks.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Tagline Divider -->
+    <div class="mt-12 sm:mt-14 flex items-center justify-center gap-4">
+      <span class="hidden sm:block h-px w-20 bg-zinc-300"></span>
+      <p class="text-[11px] sm:text-xs font-bold tracking-[0.26em] uppercase text-zinc-800 text-center">
+        Drive More. Pay <span class="text-orange-600">Less.</span>
+      </p>
+      <span class="hidden sm:block h-px w-20 bg-zinc-300"></span>
+    </div>
+
+  </main>
+
+  <!-- Minimal Clean Footer with Subtle Admin Link -->
+  <footer class="w-full py-6 text-center border-t border-zinc-200/60 bg-white/20">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <p class="text-[10px] tracking-[0.18em] uppercase text-zinc-500">
+        &copy; 2026 ACED Rentals LLC &bull; Metro Atlanta, GA
+      </p>
+      <a href="/admin" class="text-[10px] font-medium text-zinc-400 hover:text-zinc-600 transition-colors">
+        Admin Access
+      </a>
+    </div>
+  </footer>
+
+  <!-- Frontend Logic -->
+  <script>
+    const form = document.getElementById('earlyAccessForm');
+    const input = document.getElementById('leadInput');
+    const inputIcon = document.getElementById('inputIcon');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnArrow = document.getElementById('btnArrow');
+    const btnSpinner = document.getElementById('btnSpinner');
+    const formError = document.getElementById('formError');
+    const successBox = document.getElementById('earlyAccessSuccess');
+    const submittedValue = document.getElementById('submittedValue');
+    const spotText = document.getElementById('spotText');
+    const mailtoFallback = document.getElementById('mailtoFallback');
+
+    // Dynamic Icon Switcher (Email vs Phone)
+    input.addEventListener('input', function() {
+      const val = input.value.trim();
+      formError.classList.add('hidden');
+      if (val.includes('@')) {
+        // Mail Icon
+        inputIcon.innerHTML = `<svg class="w-4 h-4 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7L12 13L21 7"/></svg>`;
+      } else if (/\d/.test(val)) {
+        // Phone Icon
+        inputIcon.innerHTML = `<svg class="w-4 h-4 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+      } else {
+        inputIcon.innerHTML = `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7L12 13L21 7"/></svg>`;
+      }
+    });
+
+    // Form Submission to /api/waitlist
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const contact = input.value.trim();
+      if (!contact) return;
+
+      // Reset states
+      formError.classList.add('hidden');
+      formError.textContent = '';
+      submitBtn.disabled = true;
+      btnText.textContent = 'Saving...';
+      btnArrow.classList.add('hidden');
+      btnSpinner.classList.remove('hidden');
+
+      try {
+        const response = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ contact, source: 'coming_soon_page' }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.error || 'Something went wrong. Please check your contact and try again.');
+        }
+
+        // Success Feedback
+        submittedValue.textContent = contact;
+        if (data.spotNumber) {
+          spotText.textContent = `Spot #${data.spotNumber} & 40% Launch Code Reserved`;
+        } else if (data.isDuplicate) {
+          spotText.textContent = 'Already on Priority List';
+        }
+
+        mailtoFallback.href =
+          'mailto:dispatch@acedrentals.com?subject=' +
+          encodeURIComponent('40% Launch Offer Confirmation — ACED Rentals') +
+          '&body=' +
+          encodeURIComponent('I reserved my 40% launch discount.\n\nContact: ' + contact);
+
+        form.classList.add('hidden');
+        successBox.classList.remove('hidden');
+        successBox.classList.add('flex');
+      } catch (err) {
+        formError.textContent = err.message;
+        formError.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = 'Notify Me';
+        btnArrow.classList.remove('hidden');
+        btnSpinner.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

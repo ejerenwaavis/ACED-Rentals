@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACED Rentals — Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #F8F9FA;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-zinc-900 selection:bg-orange-500 selection:text-white flex flex-col">
+
+  <!-- Top Admin Navbar -->
+  <header class="bg-white border-b border-zinc-200 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Logo & Title -->
+      <div class="flex items-center gap-3">
+        <a href="/" class="flex flex-col leading-none group">
+          <span class="text-xl font-black tracking-tight text-zinc-950 group-hover:text-orange-600 transition-colors">ACED</span>
+          <span class="text-[8px] font-bold tracking-[0.3em] uppercase text-zinc-500">Rentals</span>
+        </a>
+        <span class="text-zinc-300">|</span>
+        <span class="text-xs sm:text-sm font-semibold text-zinc-800">Waitlist Management</span>
+      </div>
+
+      <!-- Right Header Actions: DB Status & Logout -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <div id="dbBadge" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-zinc-100 text-zinc-600 border border-zinc-200">
+          <span class="w-2 h-2 rounded-full bg-zinc-400"></span>
+          <span id="dbStatusText">Checking DB...</span>
+        </div>
+
+        <button
+          id="logoutBtn"
+          class="inline-flex items-center gap-1 text-xs font-semibold text-zinc-600 hover:text-rose-600 px-3 py-1.5 rounded-lg border border-zinc-200 hover:border-rose-200 hover:bg-rose-50 transition-all cursor-pointer"
+        >
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span class="hidden sm:inline">Logout</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Dashboard Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-6">
+
+    <!-- Metrics Cards Row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      
+      <!-- Total Leads -->
+      <div class="bg-white p-5 rounded-2xl border border-zinc-200 shadow-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium uppercase tracking-wider text-zinc-500">Total Leads</span>
+          <div class="w-7 h-7 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+        </div>
+        <p id="metricTotal" class="mt-2 text-2xl sm:text-3xl font-extrabold text-zinc-950">0</p>
+        <span class="text-[11px] text-zinc-500">Early access requests</span>
+      </div>
+
+      <!-- Today's Signups -->
+      <div class="bg-white p-5 rounded-2xl border border-zinc-200 shadow-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium uppercase tracking-wider text-zinc-500">Today</span>
+          <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+          </div>
+        </div>
+        <p id="metricToday" class="mt-2 text-2xl sm:text-3xl font-extrabold text-zinc-950">0</p>
+        <span class="text-[11px] text-emerald-600 font-medium">New signups today</span>
+      </div>
+
+      <!-- Email Leads -->
+      <div class="bg-white p-5 rounded-2xl border border-zinc-200 shadow-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium uppercase tracking-wider text-zinc-500">Emails</span>
+          <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7L12 13L21 7"/></svg>
+          </div>
+        </div>
+        <p id="metricEmails" class="mt-2 text-2xl sm:text-3xl font-extrabold text-zinc-950">0</p>
+        <span class="text-[11px] text-zinc-500">Email subscribers</span>
+      </div>
+
+      <!-- Phone Leads -->
+      <div class="bg-white p-5 rounded-2xl border border-zinc-200 shadow-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium uppercase tracking-wider text-zinc-500">Phones / SMS</span>
+          <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+        </div>
+        <p id="metricPhones" class="mt-2 text-2xl sm:text-3xl font-extrabold text-zinc-950">0</p>
+        <span class="text-[11px] text-zinc-500">Mobile drivers</span>
+      </div>
+
+    </div>
+
+    <!-- Table Toolbar: Search, Filters, CSV Export -->
+    <div class="bg-white rounded-2xl border border-zinc-200 shadow-xs p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      
+      <!-- Search Input -->
+      <div class="relative flex-1 max-w-md">
+        <svg class="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search by email or phone number..."
+          class="w-full pl-9 pr-4 py-2 rounded-xl border border-zinc-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-xs sm:text-sm placeholder-zinc-400 focus:outline-none transition-all"
+        />
+      </div>
+
+      <!-- Status Filter Tabs & Export CSV -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0">
+        <div class="inline-flex rounded-xl bg-zinc-100 p-1 text-xs font-semibold text-zinc-600">
+          <button data-status="all" class="filter-tab px-3 py-1.5 rounded-lg bg-white text-zinc-950 shadow-xs">All</button>
+          <button data-status="new" class="filter-tab px-3 py-1.5 rounded-lg hover:text-zinc-900 transition-colors">New</button>
+          <button data-status="contacted" class="filter-tab px-3 py-1.5 rounded-lg hover:text-zinc-900 transition-colors">Contacted</button>
+          <button data-status="reserved" class="filter-tab px-3 py-1.5 rounded-lg hover:text-zinc-900 transition-colors">Reserved</button>
+        </div>
+
+        <a
+          href="/api/admin/export"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold transition-all shrink-0 cursor-pointer shadow-xs"
+        >
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Export CSV</span>
+        </a>
+
+        <button
+          id="refreshBtn"
+          title="Refresh table"
+          class="p-2 rounded-xl border border-zinc-200 hover:bg-zinc-50 text-zinc-600 hover:text-zinc-900 transition-colors cursor-pointer"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Waitlist Data Table -->
+    <div class="bg-white rounded-2xl border border-zinc-200 shadow-xs overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-zinc-50/80 border-b border-zinc-200 text-zinc-500 font-semibold text-[11px] uppercase tracking-wider">
+            <tr>
+              <th class="py-3.5 px-4 sm:px-6">Contact</th>
+              <th class="py-3.5 px-4">Type</th>
+              <th class="py-3.5 px-4">Date Joined</th>
+              <th class="py-3.5 px-4">Status</th>
+              <th class="py-3.5 px-4">Notes</th>
+              <th class="py-3.5 px-4 sm:px-6 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="leadsTableBody" class="divide-y divide-zinc-200/70">
+            <!-- Dynamic rows injected here -->
+            <tr>
+              <td colspan="6" class="py-12 text-center text-zinc-400 text-xs">
+                Loading waitlist records...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Toast notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden px-4 py-2.5 rounded-xl bg-zinc-950 text-white text-xs font-semibold shadow-lg transition-all"></div>
+
+  <!-- Client-side Dashboard JavaScript -->
+  <script>
+    let currentStatus = 'all';
+    let searchQuery = '';
+    let leadsData = [];
+
+    const tableBody = document.getElementById('leadsTableBody');
+    const searchInput = document.getElementById('searchInput');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const dbBadge = document.getElementById('dbBadge');
+    const dbStatusText = document.getElementById('dbStatusText');
+    const toast = document.getElementById('toast');
+
+    function showToast(msg, isError = false) {
+      toast.textContent = msg;
+      toast.className = `fixed bottom-6 right-6 z-50 px-4 py-2.5 rounded-xl text-xs font-semibold shadow-lg transition-all ${
+        isError ? 'bg-rose-600 text-white' : 'bg-zinc-950 text-white'
+      }`;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+
+    async function fetchLeads() {
+      try {
+        const url = `/api/admin/leads?status=${currentStatus}&search=${encodeURIComponent(searchQuery)}`;
+        const res = await fetch(url);
+        if (res.status === 401) {
+          window.location.href = '/admin/login.html';
+          return;
+        }
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+
+        leadsData = data.leads;
+        renderMetrics(data.metrics);
+        renderTable(data.leads);
+      } catch (err) {
+        showToast(err.message, true);
+        tableBody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-rose-500 font-medium">${err.message}</td></tr>`;
+      }
+    }
+
+    function renderMetrics(m) {
+      if (!m) return;
+      document.getElementById('metricTotal').textContent = m.total ?? 0;
+      document.getElementById('metricToday').textContent = m.today ?? 0;
+      document.getElementById('metricEmails').textContent = m.emails ?? 0;
+      document.getElementById('metricPhones').textContent = m.phones ?? 0;
+
+      if (m.isMongo) {
+        dbBadge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200';
+        dbStatusText.textContent = 'MongoDB Connected';
+      } else {
+        dbBadge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200';
+        dbStatusText.textContent = 'Local File Mode';
+      }
+    }
+
+    function renderTable(leads) {
+      if (!leads || leads.length === 0) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-12 text-center text-zinc-400">
+              <p class="text-sm font-semibold text-zinc-700">No waitlist entries found</p>
+              <p class="text-xs text-zinc-400 mt-1">When drivers join via the coming soon page, they will show up here immediately.</p>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tableBody.innerHTML = leads.map((lead) => {
+        const dateStr = lead.createdAt ? new Date(lead.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '-';
+        const typeBadge = lead.type === 'phone'
+          ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">Phone</span>'
+          : '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">Email</span>';
+
+        return `
+          <tr class="hover:bg-zinc-50/60 transition-colors" data-id="${lead._id}">
+            <td class="py-3 px-4 sm:px-6">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-zinc-900 select-all">${lead.contact}</span>
+                <button onclick="copyToClipboard('${lead.contact}')" title="Copy to clipboard" class="text-zinc-400 hover:text-orange-600 transition-colors">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+            </td>
+            <td class="py-3 px-4">${typeBadge}</td>
+            <td class="py-3 px-4 text-xs text-zinc-500">${dateStr}</td>
+            <td class="py-3 px-4">
+              <select onchange="updateStatus('${lead._id}', this.value)" class="text-xs font-medium px-2 py-1 rounded-lg border border-zinc-200 bg-white focus:outline-none focus:border-orange-500">
+                <option value="new" ${lead.status === 'new' ? 'selected' : ''}>New</option>
+                <option value="contacted" ${lead.status === 'contacted' ? 'selected' : ''}>Contacted</option>
+                <option value="reserved" ${lead.status === 'reserved' ? 'selected' : ''}>Reserved</option>
+                <option value="unsubscribed" ${lead.status === 'unsubscribed' ? 'selected' : ''}>Unsubscribed</option>
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <input
+                type="text"
+                placeholder="Add note..."
+                value="${lead.notes || ''}"
+                onblur="updateNotes('${lead._id}', this.value)"
+                class="w-full text-xs px-2 py-1 rounded border border-transparent hover:border-zinc-200 focus:border-orange-500 focus:bg-white bg-transparent focus:outline-none transition-colors"
+              />
+            </td>
+            <td class="py-3 px-4 sm:px-6 text-right">
+              <button onclick="deleteLead('${lead._id}')" class="text-zinc-400 hover:text-rose-600 transition-colors p-1" title="Delete record">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function updateStatus(id, newStatus) {
+      try {
+        const res = await fetch(`/api/admin/leads/${id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus }),
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+        showToast('Status updated.');
+      } catch (err) {
+        showToast(err.message, true);
+      }
+    }
+
+    async function updateNotes(id, notes) {
+      try {
+        const res = await fetch(`/api/admin/leads/${id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ notes }),
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+        showToast('Notes saved.');
+      } catch (err) {
+        showToast(err.message, true);
+      }
+    }
+
+    async function deleteLead(id) {
+      if (!confirm('Are you sure you want to remove this waitlist lead?')) return;
+      try {
+        const res = await fetch(`/api/admin/leads/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+        showToast('Lead deleted.');
+        fetchLeads();
+      } catch (err) {
+        showToast(err.message, true);
+      }
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text);
+      showToast(`Copied: ${text}`);
+    }
+
+    // Filter Tabs
+    filterTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach((t) => {
+          t.className = 'filter-tab px-3 py-1.5 rounded-lg hover:text-zinc-900 transition-colors';
+        });
+        tab.className = 'filter-tab px-3 py-1.5 rounded-lg bg-white text-zinc-950 shadow-xs';
+        currentStatus = tab.getAttribute('data-status');
+        fetchLeads();
+      });
+    });
+
+    // Debounced Search
+    let searchTimeout;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        searchQuery = searchInput.value.trim();
+        fetchLeads();
+      }, 250);
+    });
+
+    refreshBtn.addEventListener('click', fetchLeads);
+
+    logoutBtn.addEventListener('click', async () => {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      window.location.href = '/admin/login.html';
+    });
+
+    // Initial load
+    fetchLeads();
+  </script>
+</body>
+</html>
