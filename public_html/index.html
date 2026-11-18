@@ -1,471 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ACED Rentals — Delivery Vans Made for Delivery Drivers</title>
-  <meta name="description" content="Rent spacious, reliable cargo minivans at flat rates that work. Built for Metro Atlanta route contractors, DSPs, and couriers. Early access 40% off." />
-  <meta property="og:title" content="ACED Rentals — Delivery Vans Made for Delivery Drivers" />
-  <meta property="og:description" content="Metro Atlanta cargo minivan rentals. Rent spacious, route-ready vans with no commercial traps. Join early access for 40% off." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#EA580C" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚐</text></svg>" />
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACED Rentals — Cargo Minivan Rentals for Delivery Drivers | Metro Atlanta</title>
+  <meta name="description" content="Route-ready cargo minivans at one flat weekly price. Built for contractors, DSPs, and independent couriers in Metro Atlanta. Claim 40% off your first week.">
+  <meta property="og:title" content="ACED Rentals — Delivery vans for delivery drivers">
+  <meta property="og:description" content="The van that fits your whole route. Route-ready cargo minivans at flat weekly prices in Metro Atlanta.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://acedrentals.com/">
+  <meta name="theme-color" content="#EA580C">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚐</text></svg>">
+
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
+      margin: 0;
+      background: #F5F2EC;
+      color: #111;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: #F6F4F0;
-      color: #18181B;
+      -webkit-font-smoothing: antialiased;
     }
-    .studio-canvas {
-      background:
-        radial-gradient(circle at 85% 25%, rgba(228, 228, 231, 0.45) 0%, rgba(246, 244, 240, 0) 60%),
-        linear-gradient(135deg, #FAF9F6 0%, #F4F1EC 55%, #ECE7DF 100%);
+    a { color: inherit; text-decoration: none; }
+    .sg { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      box-sizing: border-box;
     }
-    @keyframes pulse-subtle {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.85; transform: scale(0.98); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 26px;
+      border-radius: 999px;
+      font: 600 16px 'Inter', sans-serif;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+      text-decoration: none;
     }
-    .badge-pulse {
-      animation: pulse-subtle 3s ease-in-out infinite;
+    .btn .ar { transition: transform .2s ease; }
+    .btn:hover .ar { transform: translateX(5px); }
+    .btn:focus-visible, .lnk:focus-visible { outline: 3px solid #111; outline-offset: 3px; }
+    .primary {
+      background: #EA580C;
+      color: #111;
+      border: none;
+    }
+    .primary:hover {
+      background: #FB7A33;
+      transform: translateY(-1px);
+    }
+    .ghost {
+      border: 1.5px solid #111;
+      color: #111;
+      background: transparent;
+    }
+    .ghost:hover {
+      background: #111;
+      color: #F5F2EC;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .stat {
+      padding: 48px 32px;
+      border-left: 1px solid #D8D2C6;
+    }
+    .stat:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .step {
+      padding: 32px 32px 40px 0;
+      border-top: 1.5px solid #111;
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .plan {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      border: 1.5px solid transparent;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .plan:hover {
+      transform: translateY(-6px);
+      border-color: #EA580C;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    }
+    .route {
+      stroke-dasharray: 6 10;
+      animation: go 1.4s linear infinite;
+    }
+    @keyframes go {
+      to { stroke-dashoffset: -32; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .route { animation: none; }
+      .plan, .btn, .btn .ar { transition: none; }
+    }
+    @media (max-width: 860px) {
+      .hero, .stats, .steps, .plans { grid-template-columns: 1fr; }
+      .stat {
+        border-left: 0;
+        border-top: 1px solid #D8D2C6;
+        padding: 32px 0;
+      }
+      .stat:first-child { border-top: 0; }
+      .step { padding-right: 0; }
+      .nav-links { display: none; }
+      .h1 { font-size: 48px !important; }
+      .offer-h { font-size: 56px !important; }
+      .wrap { padding: 0 20px; }
     }
   </style>
 </head>
-<body class="studio-canvas min-h-screen flex flex-col justify-between antialiased selection:bg-orange-500 selection:text-white overflow-x-hidden relative">
+<body>
 
-  <!-- Top Navigation Header -->
-  <header class="w-full max-w-5xl mx-auto px-6 sm:px-10 pt-7 sm:pt-9 flex items-center justify-between relative z-10">
-    <!-- Clean Stacked ACED Rentals Wordmark Block -->
-    <a href="/" class="inline-flex flex-col items-start focus:outline-none group">
-      <span class="block text-2xl sm:text-[28px] font-black tracking-tight text-zinc-900 leading-none group-hover:text-orange-600 transition-colors">
-        ACED
-      </span>
-      <span class="block text-[9px] sm:text-[10px] font-semibold tracking-[0.34em] uppercase text-zinc-500 mt-1">
-        Rentals
-      </span>
+  <!-- Top Header Navigation -->
+  <header class="wrap" style="display:flex;align-items:center;justify-content:space-between;height:88px">
+    <a href="/" class="sg lnk" style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:.04em">
+      <span style="width:14px;height:14px;background:#EA580C;border-radius:4px;display:block"></span>
+      ACED RENTALS
     </a>
-
-    <!-- Top Right Status & Tagline -->
-    <div class="flex items-center gap-4">
-      <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200/60 text-[11px] font-semibold text-orange-800">
-        <span class="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span>
-        <span>Atlanta Fleet • Coming Soon</span>
-      </div>
-      <nav aria-label="Brand Pillars" class="hidden md:flex items-center gap-3 text-[11px] font-semibold tracking-[0.2em] uppercase text-zinc-500">
-        <span>Rent</span>
-        <span class="text-orange-500">&bull;</span>
-        <span>Deliver</span>
-        <span class="text-orange-500">&bull;</span>
-        <span>Grow</span>
-      </nav>
-      <span class="sm:hidden text-[10px] font-bold tracking-[0.18em] uppercase text-zinc-500 bg-zinc-200/50 px-2.5 py-1 rounded-full">
-        Atlanta, GA
-      </span>
+    <div style="display:flex;align-items:center;gap:28px">
+      <span class="nav-links" style="font-size:14px;color:#5B5750">Metro Atlanta · Early access open</span>
+      <a href="#waitlist" class="btn ghost" style="min-height:44px;padding:0 20px;font-size:14px">Get 40% off</a>
     </div>
   </header>
 
-  <!-- Main Content Container -->
-  <main class="w-full max-w-5xl mx-auto px-6 sm:px-10 pt-8 sm:pt-12 pb-12 relative z-10 flex-1 flex flex-col justify-center">
-
-    <!-- Hero Split Section -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
-
-      <!-- Left Copy Column -->
-      <div class="lg:col-span-6 flex flex-col items-start">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-zinc-200 text-[11px] font-semibold tracking-[0.16em] uppercase text-zinc-600 mb-4 shadow-xs">
-          <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-          <span>Metro Atlanta Commercial Fleet</span>
-        </div>
-
-        <h1 class="text-4xl sm:text-[52px] font-black tracking-[-0.03em] leading-[1.06] text-zinc-950">
-          Delivery Vans.<br />
-          Made for<br />
-          <span class="text-orange-600 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Delivery Drivers.</span>
-        </h1>
-
-        <p class="mt-4 sm:mt-5 text-sm sm:text-base text-zinc-600 leading-relaxed max-w-md">
-          Rent spacious, route-ready cargo minivans at a flat weekly price that makes sense. Tailored for Metro Atlanta route contractors, DSPs, and independent couriers.
-        </p>
-
-        <!-- Quick Spec Highlights -->
-        <div class="mt-5 flex flex-wrap items-center gap-2 text-xs text-zinc-700 font-medium">
-          <span class="inline-flex items-center gap-1.5 bg-zinc-100 border border-zinc-200/80 px-2.5 py-1 rounded-md">
-            <svg class="w-3.5 h-3.5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            140+ cu. ft. Cargo Space
-          </span>
-          <span class="inline-flex items-center gap-1.5 bg-zinc-100 border border-zinc-200/80 px-2.5 py-1 rounded-md">
-            <svg class="w-3.5 h-3.5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Fold-Flat Stowage
-          </span>
-          <span class="inline-flex items-center gap-1.5 bg-zinc-100 border border-zinc-200/80 px-2.5 py-1 rounded-md">
-            <svg class="w-3.5 h-3.5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Flexible Weekly Terms
-          </span>
-        </div>
-
-        <!-- Minimal Orange Accent Rule -->
-        <div class="w-12 h-[3px] bg-orange-500 rounded-full mt-6"></div>
-      </div>
-
-      <!-- Right Visual Column: Architectural Silver Cargo Minivan Vector Illustration -->
-      <div class="lg:col-span-6 flex justify-center lg:justify-end">
-        <div class="w-full max-w-[460px] relative">
-          
-          <!-- Subtle Floating Fleet Tag -->
-          <div class="absolute -top-3 right-4 z-20 hidden sm:flex items-center gap-2 bg-white/90 backdrop-blur-md border border-zinc-200 px-3 py-1.5 rounded-full shadow-sm text-xs font-semibold text-zinc-800">
-            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-            <span>Commercial Spec Fleet</span>
-          </div>
-
-          <!-- Crisp Vector Illustration of Open-Hatch Silver Minivan Loaded with Cargo Boxes -->
-          <svg viewBox="0 0 520 310" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-sm select-none" role="img" aria-label="Silver cargo minivan loaded with delivery packages">
-            <defs>
-              <linearGradient id="bodySilver" x1="60" y1="80" x2="460" y2="240" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#EDEDF0" />
-                <stop offset="50%" stop-color="#D4D4D8" />
-                <stop offset="100%" stop-color="#A1A1AA" />
-              </linearGradient>
-              <linearGradient id="cabinDark" x1="250" y1="100" x2="430" y2="210" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#18181B" />
-                <stop offset="100%" stop-color="#27272A" />
-              </linearGradient>
-              <linearGradient id="boxFront" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#D6A87C" />
-                <stop offset="100%" stop-color="#B88658" />
-              </linearGradient>
-              <linearGradient id="boxSide" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#C29264" />
-                <stop offset="100%" stop-color="#9E6E43" />
-              </linearGradient>
-            </defs>
-
-            <!-- Floor Contact Shadow -->
-            <ellipse cx="265" cy="276" rx="215" ry="14" fill="#18181B" fill-opacity="0.14" />
-
-            <!-- Open Rear Liftgate Door (Raised Upward) -->
-            <path d="M242 94C275 44 345 24 426 28C436 29 442 36 439 45L422 86C365 82 295 85 242 94Z" fill="url(#bodySilver)" stroke="#71717A" stroke-width="1.5" />
-            <!-- Liftgate Glass -->
-            <path d="M266 84C294 48 352 34 416 37L406 72C356 69 306 73 266 84Z" fill="#27272A" />
-            <!-- Liftgate Struts -->
-            <line x1="264" y1="104" x2="294" y2="66" stroke="#3F3F46" stroke-width="3" stroke-linecap="round" />
-            <line x1="424" y1="102" x2="412" y2="62" stroke="#3F3F46" stroke-width="3" stroke-linecap="round" />
-
-            <!-- Main Van Side & Rear Quarter Body -->
-            <path d="M56 174C62 146 92 114 142 102L242 92L432 94C452 96 466 112 470 138L478 216C479 234 468 248 448 250H84C64 248 52 234 52 214L56 174Z" fill="url(#bodySilver)" stroke="#71717A" stroke-width="1.5" />
-
-            <!-- Side Tinted Windows -->
-            <path d="M84 156C98 134 122 118 152 113V156H84Z" fill="#27272A" />
-            <path d="M160 112L234 106V156H160V112Z" fill="#18181B" />
-            <!-- Side Mirror -->
-            <path d="M72 152C62 152 58 158 60 165H76V152H72Z" fill="#27272A" />
-
-            <!-- Open Rear Cargo Bay Interior -->
-            <rect x="256" y="104" width="184" height="106" rx="10" fill="url(#cabinDark)" stroke="#52525B" stroke-width="2" />
-
-            <!-- Stacked Cardboard Delivery Boxes Inside Cargo Bay -->
-            <!-- Bottom Row -->
-            <rect x="268" y="164" width="52" height="42" rx="2" fill="url(#boxFront)" stroke="#8C5E35" stroke-width="1" />
-            <line x1="294" y1="164" x2="294" y2="206" stroke="#F5E6D3" stroke-opacity="0.55" stroke-width="3" />
-            <rect x="322" y="160" width="56" height="46" rx="2" fill="url(#boxSide)" stroke="#8C5E35" stroke-width="1" />
-            <line x1="350" y1="160" x2="350" y2="206" stroke="#F5E6D3" stroke-opacity="0.55" stroke-width="3" />
-            <rect x="380" y="166" width="50" height="40" rx="2" fill="url(#boxFront)" stroke="#8C5E35" stroke-width="1" />
-            <line x1="405" y1="166" x2="405" y2="206" stroke="#F5E6D3" stroke-opacity="0.55" stroke-width="3" />
-            <!-- Top Row -->
-            <rect x="274" y="122" width="48" height="40" rx="2" fill="url(#boxSide)" stroke="#8C5E35" stroke-width="1" />
-            <line x1="298" y1="122" x2="298" y2="162" stroke="#F5E6D3" stroke-opacity="0.55" stroke-width="3" />
-            <rect x="326" y="116" width="52" height="42" rx="2" fill="url(#boxFront)" stroke="#8C5E35" stroke-width="1" />
-            <line x1="352" y1="116" x2="352" y2="158" stroke="#F5E6D3" stroke-opacity="0.55" stroke-width="3" />
-            <rect x="382" y="126" width="44" height="38" rx="2" fill="url(#boxSide)" stroke="#8C5E35" stroke-width="1" />
-
-            <!-- Rear Bumper & Lower Valance -->
-            <path d="M242 212H474L470 244C466 250 456 253 442 253H258C246 253 240 248 240 238L242 212Z" fill="#D4D4D8" stroke="#71717A" stroke-width="1.2" />
-            <rect x="256" y="238" width="194" height="14" rx="4" fill="#27272A" />
-
-            <!-- Taillights (Signature Red/Orange Accent) -->
-            <path d="M236 144L254 146V168L232 164L236 144Z" fill="#EA580C" />
-            <path d="M442 146L464 144L468 164L442 168V146Z" fill="#EA580C" />
-
-            <!-- Rear Reflectors -->
-            <rect x="266" y="224" width="24" height="5" rx="2" fill="#EA580C" />
-            <rect x="416" y="224" width="24" height="5" rx="2" fill="#EA580C" />
-
-            <!-- Wheels & Tires -->
-            <!-- Front Left Wheel -->
-            <circle cx="102" cy="242" r="30" fill="#18181B" />
-            <circle cx="102" cy="242" r="18" fill="#E4E4E7" stroke="#52525B" stroke-width="2" />
-            <circle cx="102" cy="242" r="6" fill="#27272A" />
-            <!-- Rear Left Wheel -->
-            <circle cx="218" cy="246" r="32" fill="#18181B" />
-            <circle cx="218" cy="246" r="19" fill="#E4E4E7" stroke="#52525B" stroke-width="2" />
-            <circle cx="218" cy="246" r="6" fill="#27272A" />
-            <!-- Rear Right Wheel -->
-            <ellipse cx="446" cy="248" rx="18" ry="30" fill="#18181B" />
-          </svg>
-        </div>
+  <!-- Hero Section -->
+  <section class="wrap hero" style="padding-top:56px;padding-bottom:88px">
+    <div>
+      <p style="margin:0 0 24px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5B5750">Cargo minivan rentals · Atlanta, GA</p>
+      <h1 class="sg h1" style="margin:0;font-size:84px;line-height:.98;letter-spacing:-.03em;font-weight:700">The van that fits your whole route.</h1>
+      <p style="margin:28px 0 40px;font-size:20px;line-height:1.55;color:#4A463F;max-width:520px">Route-ready cargo minivans at one flat weekly price. Built for contractors, DSPs, and independent couriers who’d rather drive than haggle.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px">
+        <a href="#waitlist" class="btn primary">Claim 40% off week one <span class="ar">→</span></a>
+        <a href="mailto:dispatch@acedrentals.com" class="btn ghost">Talk to dispatch</a>
       </div>
     </div>
-
-    <!-- Three Value Pillars Strip -->
-    <section aria-label="Key Benefits" class="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-b border-zinc-200/80 py-8">
-      <!-- Pillar 1 -->
-      <div class="flex flex-col items-center md:items-start text-center md:text-left p-4 rounded-2xl bg-white/40 border border-zinc-200/50">
-        <div class="w-10 h-10 rounded-xl bg-orange-100/70 border border-orange-200 flex items-center justify-center text-orange-600 mb-3">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-            <line x1="12" y1="22.08" x2="12" y2="12"/>
-          </svg>
-        </div>
-        <h3 class="text-sm sm:text-base font-bold text-zinc-900">More Cargo Space</h3>
-        <p class="mt-1 text-xs text-zinc-600 leading-relaxed">
-          140+ cu. ft. with stow 'n go seating. Effortlessly fits 120+ standard packages per route run.
-        </p>
-      </div>
-
-      <!-- Pillar 2 -->
-      <div class="flex flex-col items-center md:items-start text-center md:text-left p-4 rounded-2xl bg-white/40 border border-zinc-200/50">
-        <div class="w-10 h-10 rounded-xl bg-orange-100/70 border border-orange-200 flex items-center justify-center text-orange-600 mb-3">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="1" x2="12" y2="23"/>
-            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-          </svg>
-        </div>
-        <h3 class="text-sm sm:text-base font-bold text-zinc-900">Affordable Rates</h3>
-        <p class="mt-1 text-xs text-zinc-600 leading-relaxed">
-          Transparent flat weekly rates. No predatory long-term leases, hidden fees, or surprise surcharges.
-        </p>
-      </div>
-
-      <!-- Pillar 3 -->
-      <div class="flex flex-col items-center md:items-start text-center md:text-left p-4 rounded-2xl bg-white/40 border border-zinc-200/50">
-        <div class="w-10 h-10 rounded-xl bg-orange-100/70 border border-orange-200 flex items-center justify-center text-orange-600 mb-3">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-        </div>
-        <h3 class="text-sm sm:text-base font-bold text-zinc-900">Flexible Rentals</h3>
-        <p class="mt-1 text-xs text-zinc-600 leading-relaxed">
-          Daily, weekly, or month-to-month contracts built to adapt immediately to route volume surges.
-        </p>
-      </div>
-    </section>
-
-    <!-- Early Access Offer Card (40% OFF + Waitlist Pill Form) -->
-    <section aria-label="Early Access Launch Offer" class="mt-8 sm:mt-10">
-      <div class="bg-gradient-to-br from-[#FAF8F5] to-[#F3EFEA] border border-zinc-300/80 rounded-3xl p-6 sm:p-9 shadow-[0_16px_44px_rgba(24,24,27,0.06)] relative overflow-hidden">
+    <div>
+      <!-- Animated Cargo Minivan SVG -->
+      <svg viewBox="0 0 520 230" width="100%" role="img" aria-label="Line drawing of a cargo minivan with packages stacking and animated delivery route beneath it" style="display:block">
+        <!-- Van Outline -->
+        <path d="M24 138V112Q24 104 34 102L112 96L170 70Q178 66 188 66H280Q292 66 300 72L350 100L452 108Q474 112 476 130V138Z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"></path>
         
-        <!-- Decorative subtle background badge -->
-        <div class="absolute -right-8 -bottom-8 w-48 h-48 bg-orange-500/5 rounded-full pointer-events-none blur-2xl"></div>
+        <!-- Sedan Cargo Height vs Minivan Cargo Space Animated Fill -->
+        <g opacity="0">
+          <path d="M26 138V104Q26 101 34 101H200V138Z" fill="#fff"></path>
+          <path d="M24 138V104Q24 100 34 100H200" fill="none" stroke="#111" stroke-width="3" stroke-linejoin="round"></path>
+          <animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.2;.23;.96;1" values="0;0;1;1;0"></animate>
+        </g>
+        <g opacity="0">
+          <path d="M26 138V94Q26 91 34 91H200V138Z" fill="#fff"></path>
+          <path d="M24 138V94Q24 90 34 90H200" fill="none" stroke="#111" stroke-width="3" stroke-linejoin="round"></path>
+          <animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.23;.26;.96;1" values="0;0;1;1;0"></animate>
+        </g>
+        <g opacity="0">
+          <path d="M26 138V84Q26 81 34 81H200V138Z" fill="#fff"></path>
+          <path d="M24 138V84Q24 80 34 80H200" fill="none" stroke="#111" stroke-width="3" stroke-linejoin="round"></path>
+          <animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.26;.29;.96;1" values="0;0;1;1;0"></animate>
+        </g>
+        <g opacity="0">
+          <path d="M26 138V76Q26 73 34 73H200V138Z" fill="#fff"></path>
+          <path d="M24 138V76Q24 72 34 72H200" fill="none" stroke="#111" stroke-width="3" stroke-linejoin="round"></path>
+          <animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.29;.32;.96;1" values="0;0;1;1;0"></animate>
+        </g>
+        <g opacity="0">
+          <path d="M26 138V70Q26 67 34 67H200V138Z" fill="#fff"></path>
+          <path d="M24 138V70Q24 66 34 66H200" fill="none" stroke="#111" stroke-width="3" stroke-linejoin="round"></path>
+          <animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.32;.35;.96;1" values="0;0;1;1;0"></animate>
+        </g>
+        
+        <!-- Windows -->
+        <path d="M184 74H236V98H160Z M246 74H292L322 98H246Z" fill="#E9E4D9" stroke="#111" stroke-width="3" stroke-linejoin="round"></path>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center relative z-10">
+        <!-- Stacking Delivery Packages -->
+        <g fill="#D9B98A" stroke="#111" stroke-width="2">
+          <rect x="34" y="116" width="20" height="18" rx="2"><animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.06;.9;.96;1" values="0;1;1;0;0"></animate></rect>
+          <rect x="56" y="116" width="20" height="18" rx="2"><animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.1;.9;.96;1" values="0;1;1;0;0"></animate></rect>
+          <rect x="78" y="116" width="20" height="18" rx="2"><animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.4;.44;.96;1" values="0;0;1;1;0"></animate></rect>
+          <rect x="34" y="98" width="20" height="16" rx="2"><animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.47;.51;.96;1" values="0;0;1;1;0"></animate></rect>
+          <rect x="56" y="98" width="20" height="16" rx="2"><animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.54;.58;.96;1" values="0;0;1;1;0"></animate></rect>
+          <rect x="78" y="98" width="20" height="16" rx="2"><animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.61;.65;.96;1" values="0;0;1;1;0"></animate></rect>
+          <rect x="34" y="80" width="20" height="16" rx="2"><animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.68;.72;.96;1" values="0;0;1;1;0"></animate></rect>
+          <rect x="56" y="80" width="20" height="16" rx="2"><animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.75;.79;.96;1" values="0;0;1;1;0"></animate></rect>
+          <rect x="78" y="80" width="20" height="16" rx="2"><animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.82;.86;.96;1" values="0;0;1;1;0"></animate></rect>
+        </g>
 
-          <!-- Left Offer Callout -->
-          <div class="md:col-span-5 md:border-r md:border-zinc-300/80 md:pr-6 text-center md:text-left">
-            <div class="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.2em] uppercase text-orange-600 mb-1">
-              <span>★ Exclusive Launch Offer</span>
-            </div>
-            <div class="mt-1 flex items-baseline justify-center md:justify-start gap-1.5">
-              <span class="text-4xl sm:text-5xl font-black tracking-tight text-orange-600">40%</span>
-              <span class="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-900">OFF</span>
-            </div>
-            <p class="mt-1 text-base sm:text-lg font-bold text-zinc-900">
-              Your First Week Rental
-            </p>
-            <p class="mt-1 text-xs text-zinc-500">
-              Lock in early priority before public availability opens.
-            </p>
-          </div>
+        <!-- Wheels -->
+        <circle cx="128" cy="140" r="27" fill="#F5F2EC" stroke="#111" stroke-width="3"></circle>
+        <circle cx="128" cy="140" r="10" fill="#EA580C"></circle>
+        <circle cx="384" cy="140" r="27" fill="#F5F2EC" stroke="#111" stroke-width="3"></circle>
+        <circle cx="384" cy="140" r="10" fill="#EA580C"></circle>
 
-          <!-- Right Form Column -->
-          <div class="md:col-span-7">
-            <h2 class="text-lg sm:text-xl font-bold text-zinc-950 tracking-tight">
-              Join Our Early Access Priority List
-            </h2>
-            <p class="mt-1 text-xs sm:text-sm text-zinc-600">
-              Enter your email or mobile number. We'll send your 40% voucher and van availability notice first.
-            </p>
+        <!-- Capacity Callouts -->
+        <text x="60" y="14" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="600" fill="#5B5750">
+          Sedan
+          <animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.04;.24;.32;1" values="0;1;1;0;0"></animate>
+        </text>
+        <g>
+          <path d="M60 20H196" stroke="#EA580C" stroke-width="2"></path>
+          <path d="M60 20V40" stroke="#EA580C" stroke-width="2"></path>
+          <text x="60" y="14" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="600" fill="#111">Cargo Minivan · 140+ cu. ft. cargo</text>
+          <animate attributeName="opacity" dur="9s" repeatCount="indefinite" keyTimes="0;.34;.42;.96;1" values="0;0;1;1;0"></animate>
+        </g>
 
-            <!-- Email / Phone Pill Input Form -->
-            <form
-              id="earlyAccessForm"
-              class="mt-4 flex items-center bg-white border border-zinc-300 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-500/20 rounded-full p-1.5 shadow-xs transition-all"
-            >
-              <label for="leadInput" id="inputIcon" class="pl-3.5 pr-2 text-zinc-400" aria-label="Email or phone icon">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
-                  <path d="M3 7L12 13L21 7" />
-                </svg>
-              </label>
-              
-              <input
-                id="leadInput"
-                type="text"
-                required
-                placeholder="Enter email or 10-digit phone"
-                class="flex-1 min-w-0 bg-transparent pr-2 py-2 text-xs sm:text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none"
-              />
-              
-              <button
-                type="submit"
-                id="submitBtn"
-                class="shrink-0 inline-flex items-center gap-1.5 px-5 sm:px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold text-xs sm:text-sm shadow-xs transition-all cursor-pointer disabled:opacity-50"
-              >
-                <span id="btnText">Notify Me</span>
-                <span id="btnArrow" aria-hidden="true">&rarr;</span>
-                <svg id="btnSpinner" class="hidden animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-                </svg>
-              </button>
-            </form>
+        <!-- Route Line and Waypoints -->
+        <path class="route" d="M10 196H510" stroke="#EA580C" stroke-width="3" stroke-linecap="round" fill="none"></path>
+        <circle cx="40" cy="196" r="9" fill="#111"></circle>
+        <circle cx="260" cy="196" r="9" fill="#111"></circle>
+        <circle cx="480" cy="196" r="9" fill="#EA580C" stroke="#111" stroke-width="3"></circle>
+        <text x="40" y="224" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#5B5750">Load</text>
+        <text x="260" y="224" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#5B5750">Run</text>
+        <text x="480" y="224" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#5B5750">Done</text>
+      </svg>
+    </div>
+  </section>
 
-            <!-- Error Feedback Box -->
-            <div id="formError" class="hidden mt-3 text-xs text-rose-600 font-medium px-3 py-1.5 bg-rose-50 border border-rose-200 rounded-lg"></div>
+  <!-- Big Numbers Stats Section -->
+  <section style="border-top:1px solid #D8D2C6;border-bottom:1px solid #D8D2C6">
+    <div class="wrap stats">
+      <div class="stat">
+        <div class="sg" style="font-size:72px;font-weight:700;letter-spacing:-.03em;line-height:1">140<span style="color:#EA580C">+</span></div>
+        <p style="margin:12px 0 0;font-size:16px;color:#5B5750">cubic feet of cargo space with fold-flat seating</p>
+      </div>
+      <div class="stat">
+        <div class="sg" style="font-size:72px;font-weight:700;letter-spacing:-.03em;line-height:1">150<span style="color:#EA580C">+</span></div>
+        <p style="margin:12px 0 0;font-size:16px;color:#5B5750">standard packages fit in a single route run</p>
+      </div>
+      <div class="stat">
+        <div class="sg" style="font-size:72px;font-weight:700;letter-spacing:-.03em;line-height:1">1</div>
+        <p style="margin:12px 0 0;font-size:16px;color:#5B5750">flat weekly price. No hidden fees, no surprise surcharges</p>
+      </div>
+    </div>
+  </section>
 
-            <!-- Confirmation / Success State -->
-            <div
-              id="earlyAccessSuccess"
-              class="hidden mt-4 flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white border border-emerald-300 rounded-2xl sm:rounded-full px-5 py-3 text-xs sm:text-sm shadow-xs"
-            >
-              <div class="flex items-center gap-2.5">
-                <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                </div>
-                <span class="text-zinc-800">
-                  <strong class="text-orange-600 font-bold" id="spotText">40% Launch Code Locked</strong> for <span id="submittedValue" class="font-semibold text-zinc-950"></span>
-                </span>
-              </div>
-              <a
-                id="mailtoFallback"
-                href="mailto:dispatch@acedrentals.com"
-                class="shrink-0 font-semibold text-orange-600 hover:text-orange-700 underline underline-offset-4"
-              >
-                Contact Dispatch &rarr;
-              </a>
-            </div>
+  <!-- How It Works Section -->
+  <section class="wrap" style="padding-top:112px;padding-bottom:104px">
+    <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5B5750">How it works</p>
+    <h2 class="sg" style="margin:0 0 56px;font-size:48px;line-height:1.05;letter-spacing:-.02em;max-width:640px">Three steps from sign-up to your first stop.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="sg" style="font-size:15px;font-weight:600;color:#EA580C;margin-bottom:20px">01</div>
+        <h3 class="sg" style="margin:0 0 10px;font-size:26px">Join the list</h3>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#4A463F">Leave your email or mobile number. It takes ten seconds.</p>
+      </div>
+      <div class="step">
+        <div class="sg" style="font-size:15px;font-weight:600;color:#EA580C;margin-bottom:20px">02</div>
+        <h3 class="sg" style="margin:0 0 10px;font-size:26px">Get first notice</h3>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#4A463F">We send your 40% voucher and van availability before it goes public.</p>
+      </div>
+      <div class="step">
+        <div class="sg" style="font-size:15px;font-weight:600;color:#EA580C;margin-bottom:20px">03</div>
+        <h3 class="sg" style="margin:0 0 10px;font-size:26px">Pick your term</h3>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#4A463F">Rent by the day, week, or month, and adjust when route volume does.</p>
+      </div>
+    </div>
+  </section>
 
-            <!-- Trust / Privacy micro-copy -->
-            <p class="mt-2.5 text-[11px] text-zinc-400 text-center sm:text-left">
-              🔒 Zero spam. We only contact you when the initial Atlanta fleet unlocks.
-            </p>
-          </div>
-
+  <!-- Pricing Plans Section -->
+  <section style="background:#EAE5DA;padding:96px 0">
+    <div class="wrap">
+      <h2 class="sg" style="margin:0 0 48px;font-size:48px;line-height:1.05;letter-spacing:-.02em">Rent it the way your route runs.</h2>
+      <div class="plans">
+        <div class="plan">
+          <p style="margin:0 0 28px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5B5750">Daily</p>
+          <div class="sg" style="font-size:36px;font-weight:700;letter-spacing:-.02em;color:#111">Flexible Daily</div>
+          <p style="margin:16px 0 0;font-size:16px;line-height:1.5;color:#4A463F">For volume surges, peak days, and overflow packages.</p>
+        </div>
+        <div class="plan" style="border-color:#111;position:relative">
+          <span style="position:absolute;top:-12px;right:24px;background:#EA580C;color:#111;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;letter-spacing:.08em;text-transform:uppercase">Best Value</span>
+          <p style="margin:0 0 28px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5B5750">Weekly · Most popular</p>
+          <div class="sg" style="font-size:36px;font-weight:700;letter-spacing:-.02em;color:#111">Flat Weekly</div>
+          <p style="margin:16px 0 0;font-size:16px;line-height:1.5;color:#4A463F">One flat price with zero mileage surprises or commercial traps.</p>
+        </div>
+        <div class="plan">
+          <p style="margin:0 0 28px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5B5750">Monthly</p>
+          <div class="sg" style="font-size:36px;font-weight:700;letter-spacing:-.02em;color:#111">Dedicated Term</div>
+          <p style="margin:16px 0 0;font-size:16px;line-height:1.5;color:#4A463F">Month-to-month contracts so you scale up or down anytime.</p>
         </div>
       </div>
-    </section>
-
-    <!-- Bottom Tagline Divider -->
-    <div class="mt-12 sm:mt-14 flex items-center justify-center gap-4">
-      <span class="hidden sm:block h-px w-20 bg-zinc-300"></span>
-      <p class="text-[11px] sm:text-xs font-bold tracking-[0.26em] uppercase text-zinc-800 text-center">
-        Drive More. Pay <span class="text-orange-600">Less.</span>
-      </p>
-      <span class="hidden sm:block h-px w-20 bg-zinc-300"></span>
     </div>
+  </section>
 
-  </main>
+  <!-- Launch Offer / Waitlist Section -->
+  <section id="waitlist" style="background:#111;color:#F5F2EC;padding:120px 0;scroll-margin-top:20px">
+    <div class="wrap" style="text-align:center">
+      <p style="margin:0 0 24px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#B9B4AA">Launch offer · Early access</p>
+      <div class="sg offer-h" style="font-size:132px;font-weight:700;letter-spacing:-.04em;line-height:.9;color:#EA580C">40% off</div>
+      <p class="sg" style="margin:20px 0 0;font-size:32px;font-weight:500">your first week.</p>
+      <p style="margin:24px auto 40px;max-width:520px;font-size:18px;line-height:1.55;color:#B9B4AA">Join the priority list and be first to know when the Atlanta fleet opens. Lock in your 40% discount code before launch.</p>
+      
+      <!-- Interactive Waitlist Submission Form -->
+      <form id="waitlistForm" style="max-width:520px;margin:0 auto;text-align:left" onsubmit="handleWaitlistSubmit(event)">
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+          <input 
+            type="text" 
+            id="contactInput" 
+            name="contact"
+            placeholder="Enter your email or phone number" 
+            required 
+            autocomplete="email"
+            style="flex:1;min-width:280px;min-height:56px;padding:0 24px;border-radius:999px;border:1.5px solid #333;background:#1C1A17;color:#F5F2EC;font-family:'Inter',sans-serif;font-size:16px;outline:none;transition:border-color .2s ease;"
+            onfocus="this.style.borderColor='#EA580C'"
+            onblur="this.style.borderColor='#333'"
+          />
+          <button type="submit" id="submitBtn" class="btn primary" style="min-height:56px;padding:0 34px;font-size:16px;cursor:pointer">
+            <span id="btnText">Notify me</span> <span class="ar">→</span>
+          </button>
+        </div>
+        <div id="formFeedback" style="display:none;margin-top:16px;padding:14px 20px;border-radius:12px;font-size:15px;line-height:1.45;text-align:center"></div>
+      </form>
 
-  <!-- Minimal Clean Footer with Subtle Admin Link -->
-  <footer class="w-full py-6 text-center border-t border-zinc-200/60 bg-white/20">
-    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-      <p class="text-[10px] tracking-[0.18em] uppercase text-zinc-500">
-        &copy; 2026 ACED Rentals LLC &bull; Metro Atlanta, GA
-      </p>
-      <a href="/admin" class="text-[10px] font-medium text-zinc-400 hover:text-zinc-600 transition-colors">
-        Admin Access
-      </a>
+      <p style="margin:28px 0 0;font-size:14px;color:#B9B4AA">No spam. We only write when vans are ready for pickup in Metro Atlanta.</p>
     </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="wrap" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:40px;padding-bottom:48px;font-size:14px;color:#5B5750">
+    <span class="sg" style="font-weight:700;color:#111;letter-spacing:.04em">ACED RENTALS</span>
+    <span>© 2026 ACED Rentals LLC · Metro Atlanta, GA</span>
+    <span>
+      <a class="lnk" href="mailto:dispatch@acedrentals.com" style="color:#111;text-decoration:underline">dispatch@acedrentals.com</a>
+      · <a class="lnk" href="/admin" style="color:#5B5750;text-decoration:underline">Admin</a>
+    </span>
   </footer>
 
-  <!-- Frontend Logic -->
+  <!-- Client-side Waitlist API Script -->
   <script>
-    const form = document.getElementById('earlyAccessForm');
-    const input = document.getElementById('leadInput');
-    const inputIcon = document.getElementById('inputIcon');
-    const submitBtn = document.getElementById('submitBtn');
-    const btnText = document.getElementById('btnText');
-    const btnArrow = document.getElementById('btnArrow');
-    const btnSpinner = document.getElementById('btnSpinner');
-    const formError = document.getElementById('formError');
-    const successBox = document.getElementById('earlyAccessSuccess');
-    const submittedValue = document.getElementById('submittedValue');
-    const spotText = document.getElementById('spotText');
-    const mailtoFallback = document.getElementById('mailtoFallback');
-
-    // Dynamic Icon Switcher (Email vs Phone)
-    input.addEventListener('input', function() {
-      const val = input.value.trim();
-      formError.classList.add('hidden');
-      if (val.includes('@')) {
-        // Mail Icon
-        inputIcon.innerHTML = `<svg class="w-4 h-4 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7L12 13L21 7"/></svg>`;
-      } else if (/\d/.test(val)) {
-        // Phone Icon
-        inputIcon.innerHTML = `<svg class="w-4 h-4 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
-      } else {
-        inputIcon.innerHTML = `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7L12 13L21 7"/></svg>`;
-      }
-    });
-
-    // Form Submission to /api/waitlist
-    form.addEventListener('submit', async function (e) {
+    async function handleWaitlistSubmit(e) {
       e.preventDefault();
-      const contact = input.value.trim();
+      const input = document.getElementById('contactInput');
+      const btn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const feedback = document.getElementById('formFeedback');
+      const contact = (input.value || '').trim();
+
       if (!contact) return;
 
-      // Reset states
-      formError.classList.add('hidden');
-      formError.textContent = '';
-      submitBtn.disabled = true;
-      btnText.textContent = 'Saving...';
-      btnArrow.classList.add('hidden');
-      btnSpinner.classList.remove('hidden');
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      btnText.textContent = 'Reserving...';
+      feedback.style.display = 'none';
 
       try {
-        const response = await fetch('/api/waitlist', {
+        const res = await fetch('/api/waitlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ contact, source: 'coming_soon_page' }),
+          body: JSON.stringify({ contact, source: 'landing_page' })
         });
+        const data = await res.json();
 
-        const data = await response.json();
+        feedback.style.display = 'block';
 
-        if (!response.ok || !data.success) {
-          throw new Error(data.error || 'Something went wrong. Please check your contact and try again.');
+        if (res.ok && data.success) {
+          feedback.style.background = 'rgba(234, 88, 12, 0.15)';
+          feedback.style.border = '1px solid #EA580C';
+          feedback.style.color = '#F5F2EC';
+          
+          const spotMsg = data.spot ? ' You are <strong>#' + data.spot + '</strong> on the priority list.' : '';
+          feedback.innerHTML = '✓ <strong>Spot reserved!</strong>' + spotMsg + ' Your 40% voucher code is locked in. We will reach out when the fleet is ready.';
+          input.value = '';
+        } else if (res.status === 409) {
+          feedback.style.background = 'rgba(255, 255, 255, 0.08)';
+          feedback.style.border = '1px solid #555';
+          feedback.style.color = '#F5F2EC';
+          feedback.innerHTML = '✓ <strong>You are already on the priority list!</strong> Your spot and 40% launch discount are secured.';
+        } else {
+          feedback.style.background = 'rgba(239, 68, 68, 0.2)';
+          feedback.style.border = '1px solid #ef4444';
+          feedback.style.color = '#fca5a5';
+          feedback.textContent = data.message || 'Please enter a valid email address or 10-digit mobile number.';
         }
-
-        // Success Feedback
-        submittedValue.textContent = contact;
-        if (data.spotNumber) {
-          spotText.textContent = `Spot #${data.spotNumber} & 40% Launch Code Reserved`;
-        } else if (data.isDuplicate) {
-          spotText.textContent = 'Already on Priority List';
-        }
-
-        mailtoFallback.href =
-          'mailto:dispatch@acedrentals.com?subject=' +
-          encodeURIComponent('40% Launch Offer Confirmation — ACED Rentals') +
-          '&body=' +
-          encodeURIComponent('I reserved my 40% launch discount.\n\nContact: ' + contact);
-
-        form.classList.add('hidden');
-        successBox.classList.remove('hidden');
-        successBox.classList.add('flex');
       } catch (err) {
-        formError.textContent = err.message;
-        formError.classList.remove('hidden');
+        feedback.style.display = 'block';
+        feedback.style.background = 'rgba(239, 68, 68, 0.2)';
+        feedback.style.border = '1px solid #ef4444';
+        feedback.style.color = '#fca5a5';
+        feedback.textContent = 'Connection error. Please try again or reach dispatch@acedrentals.com directly.';
       } finally {
-        submitBtn.disabled = false;
-        btnText.textContent = 'Notify Me';
-        btnArrow.classList.remove('hidden');
-        btnSpinner.classList.add('hidden');
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btnText.textContent = 'Notify me';
       }
+    }
+
+    // Smooth-scroll helper for hero/header buttons
+    document.querySelectorAll('a[href="#waitlist"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.getElementById('waitlist');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          setTimeout(function() {
+            var inp = document.getElementById('contactInput');
+            if (inp) inp.focus();
+          }, 450);
+        }
+      });
     });
   </script>
 </body>
