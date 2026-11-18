@@ -2,6 +2,7 @@ node_modules/
 .env
 data/*.json
 !data/waitlist.json.example
+scratch/
 .DS_Store
 Thumbs.db
 npm-debug.log*

@@ -318,7 +318,15 @@
       <p style="margin:24px auto 40px;max-width:520px;font-size:18px;line-height:1.55;color:#B9B4AA">Join the priority list and be first to know when the Atlanta fleet opens. Lock in your 40% discount code before launch.</p>
       
       <!-- Interactive Waitlist Submission Form -->
-      <form id="waitlistForm" style="max-width:520px;margin:0 auto;text-align:left" onsubmit="handleWaitlistSubmit(event)">
+      <form id="waitlistForm" style="max-width:520px;margin:0 auto;text-align:left;position:relative" onsubmit="handleWaitlistSubmit(event)">
+        <!-- Anti-bot honeypot fields (invisible to humans, traps automated form crawlers) -->
+        <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;width:0;height:0;overflow:hidden" aria-hidden="true">
+          <label for="company_website">Company Website</label>
+          <input type="text" name="company_website" id="company_website" tabindex="-1" autocomplete="off" value="" />
+          <label for="hp_name">Your Name</label>
+          <input type="text" name="hp_name" id="hp_name" tabindex="-1" autocomplete="off" value="" />
+        </div>
+
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
           <input 
             type="text" 
@@ -327,6 +335,7 @@
             placeholder="Enter your email or phone number" 
             required 
             autocomplete="email"
+            maxlength="100"
             style="flex:1;min-width:280px;min-height:56px;padding:0 24px;border-radius:999px;border:1.5px solid #333;background:#1C1A17;color:#F5F2EC;font-family:'Inter',sans-serif;font-size:16px;outline:none;transition:border-color .2s ease;"
             onfocus="this.style.borderColor='#EA580C'"
             onblur="this.style.borderColor='#333'"
@@ -352,8 +361,36 @@
     </span>
   </footer>
 
-  <!-- Client-side Waitlist API Script -->
+  <!-- Client-side Waitlist API Script with Anti-Bot Protection -->
   <script>
+    var securitySession = { ts: null, token: null };
+
+    // Fetch anti-bot timing token
+    async function fetchSecurityToken() {
+      try {
+        var res = await fetch('/api/token');
+        if (res.ok) {
+          securitySession = await res.json();
+        }
+      } catch (e) {
+        // Fail silently; fallback handled server-side
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fetchSecurityToken);
+    } else {
+      fetchSecurityToken();
+    }
+
+    // Refresh token on input focus if not yet populated
+    var contactEl = document.getElementById('contactInput');
+    if (contactEl) {
+      contactEl.addEventListener('focus', function() {
+        if (!securitySession.token) fetchSecurityToken();
+      });
+    }
+
     async function handleWaitlistSubmit(e) {
       e.preventDefault();
       const input = document.getElementById('contactInput');
@@ -364,16 +401,37 @@
 
       if (!contact) return;
 
+      // Basic client-side check to stop spam links early
+      if (/https?:\/\/|www\.|\.html|<\s*script|\[url=/i.test(contact)) {
+        feedback.style.display = 'block';
+        feedback.style.background = 'rgba(239, 68, 68, 0.2)';
+        feedback.style.border = '1px solid #ef4444';
+        feedback.style.color = '#fca5a5';
+        feedback.textContent = 'Please enter a valid email address or phone number without links.';
+        return;
+      }
+
       btn.disabled = true;
       btn.style.opacity = '0.7';
       btnText.textContent = 'Reserving...';
       feedback.style.display = 'none';
 
+      // Capture honeypot values (bots fill these, humans do not)
+      const hpWebsite = (document.getElementById('company_website')?.value || '').trim();
+      const hpName = (document.getElementById('hp_name')?.value || '').trim();
+
       try {
         const res = await fetch('/api/waitlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ contact, source: 'landing_page' })
+          body: JSON.stringify({
+            contact: contact,
+            source: 'landing_page',
+            company_website: hpWebsite,
+            hp_name: hpName,
+            _ts: securitySession.ts || Date.now(),
+            _token: securitySession.token || ''
+          })
         });
         const data = await res.json();
 
@@ -384,10 +442,10 @@
           feedback.style.border = '1px solid #EA580C';
           feedback.style.color = '#F5F2EC';
           
-          const spotMsg = data.spot ? ' You are <strong>#' + data.spot + '</strong> on the priority list.' : '';
+          const spotMsg = data.spotNumber || data.spot ? ' You are <strong>#' + (data.spotNumber || data.spot) + '</strong> on the priority list.' : '';
           feedback.innerHTML = '✓ <strong>Spot reserved!</strong>' + spotMsg + ' Your 40% voucher code is locked in. We will reach out when the fleet is ready.';
           input.value = '';
-        } else if (res.status === 409) {
+        } else if (res.status === 409 || data.isDuplicate) {
           feedback.style.background = 'rgba(255, 255, 255, 0.08)';
           feedback.style.border = '1px solid #555';
           feedback.style.color = '#F5F2EC';
@@ -396,7 +454,7 @@
           feedback.style.background = 'rgba(239, 68, 68, 0.2)';
           feedback.style.border = '1px solid #ef4444';
           feedback.style.color = '#fca5a5';
-          feedback.textContent = data.message || 'Please enter a valid email address or 10-digit mobile number.';
+          feedback.textContent = data.error || data.message || 'Please enter a valid email address or 10-digit mobile number.';
         }
       } catch (err) {
         feedback.style.display = 'block';
