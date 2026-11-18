@@ -3,13 +3,22 @@ function requireAdmin(req, res, next) {
     return next();
   }
 
-  // If request is an API call, return 401 JSON
-  if (req.path.startsWith('/api/') || req.xhr || (req.headers.accept && req.headers.accept.includes('application/json'))) {
-    return res.status(401).json({ success: false, error: 'Unauthorized. Admin session required.' });
+  const isApi =
+    (req.originalUrl && req.originalUrl.startsWith('/api/')) ||
+    (req.baseUrl && req.baseUrl.startsWith('/api/')) ||
+    (req.path && req.path.startsWith('/api/')) ||
+    req.xhr ||
+    (req.headers.accept && req.headers.accept.includes('application/json'));
+
+  if (isApi) {
+    return res.status(401).json({
+      success: false,
+      error: 'Unauthorized. Admin session required.',
+    });
   }
 
-  // Otherwise redirect to admin login page
-  return res.redirect('/admin/login.html');
+  // Redirect unauthenticated browser requests to /admin/login
+  return res.redirect('/admin/login');
 }
 
 module.exports = {

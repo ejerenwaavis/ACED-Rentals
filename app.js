@@ -16,10 +16,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const isProd = process.env.NODE_ENV === 'production';
 
-// Security Headers (Configured for Tailwind CDN & Google Fonts)
+// Security Headers
 app.use(
   helmet({
-    contentSecurityPolicy: false, // Allows inline SVG & Tailwind CDN without friction
+    contentSecurityPolicy: false,
     crossOriginEmbedderPolicy: false,
   })
 );
@@ -48,23 +48,35 @@ app.use(
   })
 );
 
-// Serve static frontend files from public_html
-// IMPORTANT: dotfiles: 'allow' ensures Let's Encrypt / acme-challenge files are served!
-const staticDir = path.join(__dirname, 'public_html');
-app.use(express.static(staticDir, { dotfiles: 'allow' }));
+// Admin view paths (strictly separated outside public_html)
+const adminViewsDir = path.join(__dirname, 'views', 'admin');
+
+// Admin Login Route (Public, but redirects to /admin if already authenticated)
+app.get('/admin/login', (req, res) => {
+  if (req.session && req.session.isAdmin) {
+    return res.redirect('/admin');
+  }
+  res.sendFile(path.join(adminViewsDir, 'login.html'));
+});
+
+// Admin Dashboard Route (Strictly guarded by requireAdmin middleware)
+app.get('/admin', requireAdmin, (req, res) => {
+  res.sendFile(path.join(adminViewsDir, 'index.html'));
+});
+
+// Route redirects for legacy URLs
+app.get('/admin/index.html', (req, res) => res.redirect('/admin'));
+app.get('/admin/login.html', (req, res) => res.redirect('/admin/login'));
 
 // Mount API routes
 app.use('/api', apiRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 
-// Admin portal route guards
-app.get('/admin', requireAdmin, (req, res) => {
-  res.sendFile(path.join(staticDir, 'admin', 'index.html'));
-});
-app.get('/admin/index.html', requireAdmin, (req, res) => {
-  res.sendFile(path.join(staticDir, 'admin', 'index.html'));
-});
+// Serve static frontend files from public_html (index.html, robots.txt, etc.)
+// dotfiles: 'allow' ensures Let's Encrypt / acme-challenge files are served
+const staticDir = path.join(__dirname, 'public_html');
+app.use(express.static(staticDir, { dotfiles: 'allow' }));
 
 // Top-level health check endpoint for monitoring & deployment
 app.get('/health', (req, res) => {
@@ -75,7 +87,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-// SPA / 404 Fallback: serve Coming Soon page
+// Fallback: unhandled GET routes serve public Landing Page
 app.get('*', (req, res) => {
   res.sendFile(path.join(staticDir, 'index.html'));
 });
@@ -88,8 +100,6 @@ connectDB().catch((err) => {
 // Start listening immediately (Passenger requirement)
 const server = app.listen(PORT, () => {
   console.log(`[ACED Rentals] Server listening on port ${PORT}`);
-  console.log(`[ACED Rentals] Coming Soon: http://localhost:${PORT}`);
-  console.log(`[ACED Rentals] Admin Panel: http://localhost:${PORT}/admin`);
 });
 
 server.on('error', (err) => {
